@@ -1,18 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//calculation of first day
+//calculating the first day
 int first_date(int year){
 	
 	int date;
-	date =( (((year - 1)*365)  +   ((year-1)/4) - ((year -1 )/100) +((year)/400)+1)%7)+1;
+	date = ((( year - 1)*365)  +   ((year-1)/4) - ((year -1 )/100) +((year)/400)+1)%7;
 	return date;
 }
 
+// everything else (mostly)
 
-// almost everything
-void month_name(){
-int year,weekdays=0,starting_date;
+void month_name(int year){
+int weekdays=0,starting_date;
 
 char *months[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
 int monthdays[]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -20,40 +20,48 @@ int monthdays[]={31,28,31,30,31,30,31,31,30,31,30,31};
 if(( year%4==0&&year%100!=0||year%400==0))
     monthdays[1]=29;
 
-starting_date=first_date(year);
+     starting_date=first_date(year);
 
   
     for (int month=0;month<12;month++){
     int	days_in_month=monthdays[month];
     	printf("\n----------------------%s------------------------\n",months[month]);
-    	printf("\n   Sun   Mon   Tue   Wed   Thu   Fri   Sat \n");
+    	printf("\n   Sun  Mon  Tue  Wed  Thu  Fri  Sat \n");
     	for(weekdays=0;weekdays<starting_date;weekdays++)
-    	printf("      ");
+    	printf("     ");
     	for (int day =1;day<=days_in_month;day++){
 		
-    		printf("%6d",day);
+    		printf("%5d",day);
 		    if (++weekdays>6){
 			printf("\n");
 			weekdays=0;
 		}
 
-         starting_date=weekdays;
+         
 }
+starting_date=weekdays;
+}
+		
+		
 
-        }
 
-             }
+
+
+
+
+}
 
 
 int main() {
     system("color 5F");
     int year;
-    printf("Enter the year ");
-    scanf("/n%d",&year);
-    month_name();
+    printf("Enter the year you fool haha ");
+    scanf("%d",&year);
+    month_name(year);
     
 	
 	
 
     return 0;
 }
+
